@@ -5,6 +5,7 @@ import {
   Text,
   StyleSheet,
   TouchableHighlight,
+  Button,
 } from 'react-native';
 import { CheckBox } from 'react-native-elements'
 
@@ -40,6 +41,7 @@ const styles = StyleSheet.create({
 
 class RestrForm extends React.Component {
     state = {
+        search_term: null,
         location: null,
         is_open: true,
     };
@@ -50,8 +52,18 @@ class RestrForm extends React.Component {
         });
     }
 
+    handleChangeSearchTerm = (text) => {
+        this.setState({
+            search_term: text,
+        });
+    }
+
+    handleSearchRestaurants = () => {
+        this.props.navigation.navigate('list', {search_term: "Restaurants", location : this.state.location, is_open : this.state.is_open});
+    }
+
     handleSearchPress = () => {
-        this.props.navigation.navigate('list', {location : this.state.location, is_open : this.state.is_open});
+        this.props.navigation.navigate('list', {search_term: this.state.search_term, location : this.state.location, is_open : this.state.is_open});
     }
 
     render() {
@@ -60,16 +72,28 @@ class RestrForm extends React.Component {
                 <View style={styles.fieldContainer}>
                     <TextInput
                         style={styles.text}
+                        onChangeText={this.handleChangeSearchTerm}
+                        placeholder="Cleaners, movers, delivery, sushi etc."
+                        spellCheck={true}
+                        value={this.state.search_term}
+                    />
+                    <TextInput
+                        style={styles.text}
                         onChangeText={this.handleChangeLocation}
                         placeholder="Location"
                         spellCheck={false}
                         value={this.state.location}
+                    />
+                    <Button
+                        onPress={this.handleSearchRestaurants}
+                        title="Restaurants"
                     />
                     <CheckBox
                         title='Currently Open'
                         checked = {this.state.is_open}
                         onPress= {() => this.setState({ is_open : !this.state.is_open})}
                     />
+
                 </View>
 
                 <TouchableHighlight
