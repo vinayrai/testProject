@@ -6,6 +6,7 @@ import {
   StyleSheet,
   TouchableHighlight,
 } from 'react-native';
+import { CheckBox } from 'react-native-elements'
 
 const styles = StyleSheet.create({
     fieldContainer: {
@@ -40,6 +41,7 @@ const styles = StyleSheet.create({
 class RestrForm extends React.Component {
     state = {
         location: null,
+        is_open: true,
     };
 
     handleChangeLocation = (text) => {
@@ -49,7 +51,7 @@ class RestrForm extends React.Component {
     }
 
     handleSearchPress = () => {
-        this.props.navigation.navigate('list', {location : this.state.location,});
+        this.props.navigation.navigate('list', {location : this.state.location, is_open : this.state.is_open});
     }
 
     render() {
@@ -63,11 +65,16 @@ class RestrForm extends React.Component {
                         spellCheck={false}
                         value={this.state.location}
                     />
+                    <CheckBox
+                        title='Currently Open'
+                        checked = {this.state.is_open}
+                        onPress= {() => this.setState({ is_open : !this.state.is_open})}
+                    />
                 </View>
 
                 <TouchableHighlight
-                onPress={this.handleSearchPress}
-                style={styles.button}
+                    onPress={this.handleSearchPress}
+                    style={styles.button}
                 >
                 <Text style={styles.buttonText}>Search</Text>
                 </TouchableHighlight>
