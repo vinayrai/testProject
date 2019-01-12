@@ -34,5 +34,17 @@ export async function performSearch(parameters) {
     });
 }
 
+// export async function getCategory (business) {
+//     categoryString = "";
+//     categories = business.categories;
+
+//     for (const key in categories) {
+//         console.log(categories[key])
+//         categoryString += categories[key].title + ", ";
+//     }
+
+//     return categoryString;
+// }
+
 
 

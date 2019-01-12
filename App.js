@@ -5,26 +5,15 @@ import {
 } from 'react-navigation';
 
 import RestrList from './RestrList'
-import RestrForm from './RestrForm';
+import RestrForm from './RestrForm'
+import RestrPage from './RestrPage'
 
 const RootStack = createStackNavigator({
   form: {screen: RestrForm},
   list: {screen: RestrList},
+  page: {screen: RestrPage},
 });
 
 const App = createAppContainer(RootStack);
-
-//     screen: RestrForm,
-//     navigationOptions: () => ({
-//       title: 'Lookup restraunts in your area',
-//     }),
-//   },
-//   list: {
-//     screen: RestrList,
-//     navigationOptions: () => ({
-//       title: 'Restraunts in your area',
-//     }),
-//   },
-// });
 
 export default App;
