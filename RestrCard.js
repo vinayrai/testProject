@@ -3,8 +3,6 @@ import { StyleSheet, Text, View } from 'react-native';
 import { Rating, Card, Button, Icon } from 'react-native-elements';
 import { withNavigation } from 'react-navigation';
 
-//import {getNameRating, } from './api';
-
 const styles = StyleSheet.create({
     card: {
         backgroundColor: '#ffff',
@@ -23,18 +21,6 @@ const styles = StyleSheet.create({
 
     }
 });
-
-// function getCategory (business) {
-//     categoryString = "";
-//     categories = business.categories;
-
-//     for (const key in categories) {
-//         console.log(categories[key])
-//         categoryString += categories[key].title + ", ";
-//     }
-
-//     return categoryString;
-// }
 
 class RestrCard extends React.Component {
     state = {

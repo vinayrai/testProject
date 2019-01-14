@@ -15,9 +15,6 @@ class RestrList extends React.Component {
         const location = navigation.getParam('location', 'New York')
         const open_now = navigation.getParam('is_open', 'false')
         const term = navigation.getParam('search_term')
-        console.log(JSON.stringify(location))
-        console.log(JSON.stringify(open_now))
-        console.log(JSON.stringify(term))
         parameters = {'location': JSON.stringify(location), 'open_now': JSON.stringify(open_now), 'term': JSON.stringify(term)};
         performSearch(parameters).then(businesses => {
             this.setState({businesses});

@@ -16,6 +16,24 @@ function buildURL(url, parameters) {
 }
 
 
+export async function performBusinessLookup(businessId) {
+
+    baseURL = "https://api.yelp.com/v3/businesses/";
+    queryURL = baseURL + businessId;
+
+    return fetch(queryURL, {
+        method: 'GET',
+        headers: new Headers({
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer xvGVjXB9st97xSkY_ugCCneUn4k8DbikDLcxSPjvX7zUqmmLKlTZPpl4SpCUlyVJRU-FHZkUVvBIbNZHDSSt5MtzE5cD6x0ggGCYliZwv3TvlQegMinhfck742oEXHYx',
+        })
+    }).then(response => {
+        return response.json();
+    }).then(data => {
+        return data;
+    });
+}
+
 export async function performSearch(parameters) {
     
     baseURL = "https://api.yelp.com/v3/businesses/search";
@@ -33,18 +51,6 @@ export async function performSearch(parameters) {
         return data["businesses"];
     });
 }
-
-// export async function getCategory (business) {
-//     categoryString = "";
-//     categories = business.categories;
-
-//     for (const key in categories) {
-//         console.log(categories[key])
-//         categoryString += categories[key].title + ", ";
-//     }
-
-//     return categoryString;
-// }
 
 
 
